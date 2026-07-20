@@ -1,6 +1,5 @@
 import { siteData } from "@/data/content";
 import Image from "next/image";
-import munarettoImage from "../../../7G2A2370.jpg.jpeg";
 
 export const metadata = {
   title: "Sobre | Southsea Investments",
@@ -16,7 +15,7 @@ export default function Sobre() {
         <div className="relative aspect-[4/5] max-h-[700px] w-full group">
             <div className="absolute inset-0 bg-primary/20 translate-x-4 translate-y-4 z-0 transition-transform duration-700 ease-out" />
             <Image
-              src={munarettoImage}
+              src="/images/7G2A2370.jpg.jpeg"
               alt="Munaretto"
               fill
               className="object-cover grayscale group-hover:grayscale-0 transition-all duration-1000 z-10 relative shadow-2xl"

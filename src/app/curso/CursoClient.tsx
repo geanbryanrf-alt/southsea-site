@@ -1,34 +1,17 @@
 "use client";
-// Atualizando caminho da imagem para deploy na Vercel
+
 
 import { motion } from "framer-motion";
 import { siteData } from "@/data/content";
 import Link from "next/link";
 import Image from "next/image";
-import heroImage from "../../../7G2A2376.jpg.jpeg";
-import { ArrowRight, CheckCircle2, ChevronRight, Lock, AlertTriangle, PlayCircle, ShieldCheck } from "lucide-react";
+import { ArrowRight, CheckCircle2, Lock, AlertTriangle, PlayCircle, ShieldCheck } from "lucide-react";
 
 const fadeUp = {
   initial: { opacity: 0, y: 40 },
   whileInView: { opacity: 1, y: 0 },
   viewport: { once: true, margin: "-100px" },
   transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] }
-};
-
-const staggerContainer = {
-  hidden: { opacity: 0 },
-  show: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.15,
-      delayChildren: 0.2
-    }
-  }
-};
-
-const staggerItem = {
-  hidden: { opacity: 0, y: 20 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] } }
 };
 
 export function CursoClient() {
@@ -183,7 +166,7 @@ export function CursoClient() {
           >
             <div className="absolute inset-0 border-2 border-primary/20 translate-x-4 translate-y-4 z-0" />
             <Image
-              src={heroImage}
+              src="/images/7G2A2376.jpg.jpeg"
               alt="Munaretto"
               fill
               className="object-cover z-10 shadow-2xl grayscale hover:grayscale-0 transition-all duration-700"

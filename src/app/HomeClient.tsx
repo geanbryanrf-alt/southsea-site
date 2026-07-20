@@ -5,8 +5,7 @@ import { useEffect, useRef, useState } from "react";
 import { siteData } from "@/data/content";
 import Link from "next/link";
 import Image from "next/image";
-import heroImage from "../../7G2A2370.jpg.jpeg";
-import { ArrowRight, CheckCircle2, ChevronLeft, ChevronRight, BarChart3, Building2, Shield, Globe, Lock, Play } from "lucide-react";
+import { ArrowRight, CheckCircle2, ChevronLeft, ChevronRight, Globe, Lock, Play } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 // Animações refinadas (Alto Padrão)
@@ -15,17 +14,6 @@ const fadeUp = {
   whileInView: { opacity: 1, y: 0 },
   viewport: { once: true, margin: "-100px" },
   transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] }
-};
-
-const staggerContainer = {
-  hidden: { opacity: 0 },
-  show: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.15,
-      delayChildren: 0.2
-    }
-  }
 };
 
 const staggerItem = {
@@ -165,7 +153,7 @@ export function HomeClient() {
             <div className="absolute inset-0 border border-white/5 bg-secondary/10 backdrop-blur-[2px] z-0 transform translate-x-4 translate-y-4" />
             
             <Image
-              src={heroImage}
+              src="/images/7G2A2370.jpg.jpeg"
               alt="Munaretto - SOUTHSEA INVESTMENTS"
               fill
               className="object-cover object-top opacity-90 z-10 shadow-2xl shadow-black"
@@ -353,7 +341,7 @@ export function HomeClient() {
           >
             <div className="absolute inset-0 bg-primary/20 translate-x-4 translate-y-4 z-0 group-hover:translate-x-6 group-hover:translate-y-6 transition-transform duration-700 ease-out" />
             <Image
-              src={heroImage}
+              src="/images/7G2A2370.jpg.jpeg"
               alt="Munaretto"
               fill
               className="object-cover grayscale group-hover:grayscale-0 transition-all duration-1000 z-10"

@@ -1,11 +1,18 @@
-import { siteData } from "@/data/content";
+"use client";
 
-export const metadata = {
-  title: "Contato | Southsea Investments",
-  description: "Fale com a Southsea Investments."
-};
+import { siteData } from "@/data/content";
+import { useState } from "react";
 
 export default function Contato() {
+  const [formData, setFormData] = useState({ nome: "", email: "", mensagem: "" });
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    // Redirecionar para WhatsApp com a mensagem
+    const text = `Olá, meu nome é ${formData.nome} (${formData.email}). ${formData.mensagem}`;
+    window.open(`https://wa.me/5547996440299?text=${encodeURIComponent(text)}`, "_blank");
+  };
+
   return (
     <div className="min-h-screen pt-32 pb-24 bg-background">
       <div className="container mx-auto px-6 md:px-12 max-w-5xl">
@@ -33,23 +40,29 @@ export default function Contato() {
 
           <div className="bg-dark border border-white/5 p-8">
             <h3 className="text-2xl font-serif text-foreground mb-6">Mensagem Direta</h3>
-            <form className="space-y-4" onSubmit={(e) => e.preventDefault()}>
+            <form className="space-y-4" onSubmit={handleSubmit}>
               <input 
                 type="text"
                 placeholder="Nome"
+                value={formData.nome}
+                onChange={(e) => setFormData(prev => ({ ...prev, nome: e.target.value }))}
                 className="w-full bg-background border border-white/10 px-4 py-3 text-foreground focus:outline-none focus:border-primary transition-colors"
               />
               <input 
                 type="email"
                 placeholder="E-mail"
+                value={formData.email}
+                onChange={(e) => setFormData(prev => ({ ...prev, email: e.target.value }))}
                 className="w-full bg-background border border-white/10 px-4 py-3 text-foreground focus:outline-none focus:border-primary transition-colors"
               />
               <textarea 
                 rows={4}
                 placeholder="Mensagem"
+                value={formData.mensagem}
+                onChange={(e) => setFormData(prev => ({ ...prev, mensagem: e.target.value }))}
                 className="w-full bg-background border border-white/10 px-4 py-3 text-foreground focus:outline-none focus:border-primary transition-colors resize-none"
               />
-              <button className="w-full border border-primary text-primary hover:bg-primary hover:text-dark py-4 font-medium transition-all mt-4">
+              <button type="submit" className="w-full border border-primary text-primary hover:bg-primary hover:text-dark py-4 font-medium transition-all mt-4">
                 Enviar Mensagem
               </button>
             </form>
