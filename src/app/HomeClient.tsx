@@ -182,7 +182,7 @@ export function HomeClient() {
             {...fadeUp}
             className="text-center text-lg md:text-2xl text-foreground/80 font-serif italic tracking-wide max-w-4xl mx-auto"
           >
-            "{siteData.positioning}"
+            &quot;{siteData.positioning}&quot;
           </motion.p>
         </div>
       </section>
@@ -380,7 +380,7 @@ export function HomeClient() {
             <blockquote className="relative p-8 mt-8 bg-[#0A0A0A] border border-white/5">
               <div className="absolute top-0 left-0 w-1 h-full bg-primary" />
               <p className="text-2xl font-serif text-foreground/90 italic leading-snug">
-                "{siteData.aboutJocimar.quote}"
+                &quot;{siteData.aboutJocimar.quote}&quot;
               </p>
             </blockquote>
             

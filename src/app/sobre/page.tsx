@@ -41,7 +41,7 @@ export default function Sobre() {
           <blockquote className="relative p-8 mt-12 bg-[#0A0A0A] border border-white/5">
             <div className="absolute top-0 left-0 w-1 h-full bg-primary" />
             <p className="text-2xl font-serif text-foreground/90 italic leading-snug">
-              "{siteData.aboutJocimar.quote}"
+              &quot;{siteData.aboutJocimar.quote}&quot;
             </p>
           </blockquote>
         </div>

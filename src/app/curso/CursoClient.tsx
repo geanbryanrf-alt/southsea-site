@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import { siteData } from "@/data/content";
 import Link from "next/link";
 import Image from "next/image";
-import heroImage from "../../7G2A2376.jpg.jpeg";
+import heroImage from "../../../7G2A2376.jpg.jpeg";
 import { ArrowRight, CheckCircle2, ChevronRight, Lock, AlertTriangle, PlayCircle, ShieldCheck } from "lucide-react";
 
 const fadeUp = {
