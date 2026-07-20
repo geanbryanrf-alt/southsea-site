@@ -17,6 +17,28 @@ const moments = [
 ];
 
 export function HomeClient() {
+  const heroImageBlock = (
+    <motion.div initial={{ opacity: 0, scale: 0.97 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.7, delay: 0.1 }} className="relative mx-auto w-full max-w-md lg:max-w-none">
+      <motion.div animate={{ y: [0, -7, 0] }} transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}>
+        <div className="absolute -inset-4 border border-primary/30" />
+        <div className="relative aspect-[4/5] overflow-hidden border border-white/10 bg-[#111111]">
+          <Image src="/images/7G2A2370.jpg.jpeg" alt="Munaretto, advisor da Southsea Investments" fill priority sizes="(max-width: 1024px) 448px, 42vw" className="object-cover object-top grayscale-[20%] transition-all duration-700 hover:scale-[1.025] hover:grayscale-0" />
+          <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-[#050505] via-[#050505]/20 to-transparent p-6 pt-24">
+            <p className="text-xs font-medium uppercase tracking-[0.17em] text-primary">Southsea Investments</p>
+          </div>
+          <motion.div className="pointer-events-none absolute inset-y-0 -left-1/3 w-1/4 skew-x-[-18deg] bg-gradient-to-r from-transparent via-white/10 to-transparent" animate={{ x: ["0%", "650%"] }} transition={{ duration: 7, repeat: Infinity, repeatDelay: 4, ease: "easeInOut" }} />
+        </div>
+      </motion.div>
+    </motion.div>
+  );
+
+  const munarettoImageBlock = (
+    <div className="group relative mx-auto aspect-[4/5] w-full max-w-sm border border-primary/30">
+      <div className="absolute -bottom-3 -right-3 h-full w-full border border-primary/20 transition-transform duration-500 group-hover:translate-x-1.5 group-hover:translate-y-1.5" />
+      <Image src="/images/7G2A2376.jpg.jpeg" alt="Munaretto" fill sizes="(max-width: 1024px) 384px, 30vw" className="object-cover grayscale-[25%] transition-all duration-700 group-hover:scale-[1.025] group-hover:grayscale-0" />
+    </div>
+  );
+
   return (
     <div className="overflow-hidden">
       <section className="relative isolate overflow-hidden bg-[#050505] pb-16 pt-32 lg:pb-24 lg:pt-40">
@@ -26,10 +48,15 @@ export function HomeClient() {
             <p className="eyebrow">Corporate Advisory & Consulting</p>
             <h1 className="font-serif text-4xl leading-[1.02] text-foreground sm:text-5xl lg:text-7xl">Estruturação financeira para empresas em expansão, reestruturação ou captação de capital.</h1>
             <p className="mt-7 max-w-2xl text-lg leading-8 text-foreground/70 sm:text-xl">A Southsea atua ao lado de empresários, conselhos e diretorias na análise, modelagem e execução de operações financeiras complexas.</p>
+            <div className="mt-10 mb-2 lg:hidden">
+              {heroImageBlock}
+            </div>
             <div className="mt-9 flex flex-col gap-3 sm:flex-row"><Link href="/analise-estrategica" className="button-primary gap-2">Solicitar análise estratégica <ArrowUpRight size={17} /></Link><Link href="/solucoes" className="button-secondary gap-2">Conhecer soluções <ArrowRight size={17} /></Link></div>
             <p className="mt-7 text-xs uppercase tracking-[0.16em] text-foreground/40">Atuação estratégica · Processo confidencial · Critérios de enquadramento</p>
           </motion.div>
-          <motion.div initial={{ opacity: 0, scale: 0.97 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.7, delay: 0.1 }} className="relative mx-auto w-full max-w-md lg:max-w-none"><motion.div animate={{ y: [0, -7, 0] }} transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}><div className="absolute -inset-4 border border-primary/30" /><div className="relative aspect-[4/5] overflow-hidden border border-white/10 bg-[#111111]"><Image src="/images/7G2A2370.jpg.jpeg" alt="Munaretto, advisor da Southsea Investments" fill priority sizes="(max-width: 1024px) 448px, 42vw" className="object-cover object-top grayscale-[20%] transition-all duration-700 hover:scale-[1.025] hover:grayscale-0" /><div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-[#050505] via-[#050505]/20 to-transparent p-6 pt-24"><p className="text-xs font-medium uppercase tracking-[0.17em] text-primary">Southsea Investments</p></div><motion.div className="pointer-events-none absolute inset-y-0 -left-1/3 w-1/4 skew-x-[-18deg] bg-gradient-to-r from-transparent via-white/10 to-transparent" animate={{ x: ["0%", "650%"] }} transition={{ duration: 7, repeat: Infinity, repeatDelay: 4, ease: "easeInOut" }} /></div></motion.div></motion.div>
+          <div className="hidden lg:block">
+            {heroImageBlock}
+          </div>
         </div>
       </section>
 
@@ -53,7 +80,7 @@ export function HomeClient() {
 
       <section className="border-y border-white/10 bg-[#101010] py-20 lg:py-24"><div className="container mx-auto grid gap-10 px-5 md:px-10 lg:grid-cols-[0.75fr_1.25fr] lg:gap-20"><Reveal><p className="eyebrow">Cases</p><h2 className="section-title">Confidencialidade é parte da estrutura.</h2><p className="section-copy mt-5">A Southsea não publica nomes, cifras, resultados ou detalhes operacionais sem autorização formal das partes envolvidas.</p><Link href="/cases" className="mt-7 inline-flex items-center gap-2 text-sm text-primary hover:text-primary-light">Nossa política de cases <ArrowRight size={16} /></Link></Reveal><Reveal className="border border-white/10 bg-[#080808] p-6 sm:p-8"><div className="grid gap-7 sm:grid-cols-2">{[["Contexto", "Apresentado somente quando houver autorização e preservação de informações sensíveis."], ["Necessidade", "Definida a partir do diagnóstico específico de cada companhia."], ["Estrutura desenhada", "Descrita conforme escopo autorizado e obrigações de confidencialidade."], ["Resultado autorizado", "Nenhum resultado é divulgado sem validação e permissão expressa."]].map(([title, text]) => <div key={title}><p className="eyebrow !mb-2">{title}</p><p className="text-sm leading-6 text-foreground/70">{text}</p></div>)}</div></Reveal></div></section>
 
-      <section className="bg-background py-20 lg:py-24"><div className="container mx-auto grid items-center gap-12 px-5 md:px-10 lg:grid-cols-[0.78fr_1.22fr] lg:gap-20"><Reveal className="group relative mx-auto aspect-[4/5] w-full max-w-sm border border-primary/30"><div className="absolute -bottom-3 -right-3 h-full w-full border border-primary/20 transition-transform duration-500 group-hover:translate-x-1.5 group-hover:translate-y-1.5" /><Image src="/images/7G2A2376.jpg.jpeg" alt="Munaretto" fill sizes="(max-width: 1024px) 384px, 30vw" className="object-cover grayscale-[25%] transition-all duration-700 group-hover:scale-[1.025] group-hover:grayscale-0" /></Reveal><Reveal><p className="eyebrow">Munaretto</p><h2 className="section-title">Advisor para decisões financeiras que exigem visão de conjunto.</h2><p className="section-copy mt-5">Munaretto atua na Southsea Investments como advisor, apoiando empresários, conselhos e diretorias na leitura estratégica de operações financeiras complexas.</p><p className="section-copy mt-4">A prática combina visão de capital, organização de premissas, diálogo multidisciplinar e relacionamento corporativo no Brasil e em operações internacionais.</p><Link href="/sobre" className="mt-8 inline-flex items-center gap-2 text-sm text-primary hover:text-primary-light">Conhecer a Southsea <ArrowRight size={16} /></Link></Reveal></div></section>
+      <section className="bg-background py-20 lg:py-24"><div className="container mx-auto grid items-center gap-12 px-5 md:px-10 lg:grid-cols-[0.78fr_1.22fr] lg:gap-20"><Reveal className="hidden lg:block">{munarettoImageBlock}</Reveal><Reveal><p className="eyebrow">Munaretto</p><h2 className="section-title">Advisor para decisões financeiras que exigem visão de conjunto.</h2><div className="mt-8 mb-4 lg:hidden"><Reveal>{munarettoImageBlock}</Reveal></div><p className="section-copy mt-5">Munaretto atua na Southsea Investments como advisor, apoiando empresários, conselhos e diretorias na leitura estratégica de operações financeiras complexas.</p><p className="section-copy mt-4">A prática combina visão de capital, organização de premissas, diálogo multidisciplinar e relacionamento corporativo no Brasil e em operações internacionais.</p><Link href="/sobre" className="mt-8 inline-flex items-center gap-2 text-sm text-primary hover:text-primary-light">Conhecer a Southsea <ArrowRight size={16} /></Link></Reveal></div></section>
 
       <section className="border-y border-white/10 bg-[#030303] py-20 lg:py-24"><div className="container mx-auto px-5 md:px-10"><Reveal className="max-w-2xl"><p className="eyebrow">Capacidade multidisciplinar</p><h2 className="section-title">Uma operação raramente é apenas financeira.</h2></Reveal><div className="mt-12 grid gap-4 md:grid-cols-2 lg:grid-cols-4">{[{ icon: LineChart, title: "Estratégia financeira", text: "Premissas, cenários, fontes de capital e capacidade de execução." }, { icon: Scale, title: "Coordenação jurídica", text: "Integração com assessores para estrutura, contratos e aspectos societários." }, { icon: Building2, title: "Visão corporativa", text: "Leitura do negócio, governança, operação e interlocutores envolvidos." }, { icon: Landmark, title: "Contexto internacional", text: "Apoio estratégico para estruturas que envolvam diferentes mercados e contrapartes." }].map((item, index) => <Reveal key={item.title} delay={index * 0.06} className="border border-white/10 bg-[#080808] p-6"><item.icon className="text-primary" size={23} /><h3 className="mt-8 font-serif text-2xl text-foreground">{item.title}</h3><p className="mt-3 text-sm leading-6 text-foreground/60">{item.text}</p></Reveal>)}</div></div></section>
 
