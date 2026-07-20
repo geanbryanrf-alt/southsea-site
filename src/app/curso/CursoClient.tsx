@@ -1,4 +1,5 @@
 "use client";
+// Atualizando caminho da imagem para deploy na Vercel
 
 import { motion } from "framer-motion";
 import { siteData } from "@/data/content";
