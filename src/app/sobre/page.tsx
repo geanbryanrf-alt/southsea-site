@@ -1,50 +1,10 @@
-import { siteData } from "@/data/content";
+import type { Metadata } from "next";
 import Image from "next/image";
+import { Breadcrumbs } from "@/components/Breadcrumbs";
+import { JsonLd } from "@/components/JsonLd";
+import { siteUrl } from "@/data/content";
 
-export const metadata = {
-  title: "Sobre | Southsea Investments",
-  description: "Conheça a Southsea Investments e a liderança de Munaretto."
-};
-
+export const metadata: Metadata = { title: "Sobre", description: "Conheça a Southsea Investments e a atuação de Munaretto em advisory financeiro empresarial.", alternates: { canonical: "/sobre" } };
 export default function Sobre() {
-  return (
-    <div className="min-h-screen pt-32 pb-24 bg-background relative overflow-hidden">
-      <div className="absolute right-0 top-0 w-1/2 h-full bg-[radial-gradient(ellipse_at_right,_var(--tw-gradient-stops))] from-primary/10 via-transparent to-transparent opacity-60 pointer-events-none" />
-      
-      <div className="container mx-auto px-6 md:px-12 grid lg:grid-cols-2 gap-20 items-center">
-        <div className="relative aspect-[4/5] max-h-[700px] w-full group">
-            <div className="absolute inset-0 bg-primary/20 translate-x-4 translate-y-4 z-0 transition-transform duration-700 ease-out" />
-            <Image
-              src="/images/7G2A2370.jpg.jpeg"
-              alt="Munaretto"
-              fill
-              className="object-cover grayscale group-hover:grayscale-0 transition-all duration-1000 z-10 relative shadow-2xl"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent z-10 opacity-80" />
-        </div>
-
-        <div className="max-w-2xl z-20">
-          <span className="text-primary text-xs font-semibold tracking-widest uppercase mb-4 flex items-center gap-2">
-            <div className="w-8 h-[1px] bg-primary/50" />
-            {siteData.aboutJocimar.eyebrow}
-          </span>
-          <h1 className="text-4xl md:text-6xl font-serif text-foreground mb-4">{siteData.aboutJocimar.title}</h1>
-          <p className="text-2xl text-primary/80 font-serif italic mb-12">{siteData.aboutJocimar.role}</p>
-          
-          <div className="space-y-6 text-foreground/80 font-light text-lg leading-relaxed">
-            {siteData.aboutJocimar.text.map((p, idx) => (
-              <p key={idx}>{p}</p>
-            ))}
-          </div>
-          
-          <blockquote className="relative p-8 mt-12 bg-[#0A0A0A] border border-white/5">
-            <div className="absolute top-0 left-0 w-1 h-full bg-primary" />
-            <p className="text-2xl font-serif text-foreground/90 italic leading-snug">
-              &quot;{siteData.aboutJocimar.quote}&quot;
-            </p>
-          </blockquote>
-        </div>
-      </div>
-    </div>
-  );
+  return <div className="bg-background pb-20 pt-32 lg:pb-24"><div className="container mx-auto px-5 md:px-10"><JsonLd data={{ "@context": "https://schema.org", "@type": "Person", name: "Munaretto", jobTitle: "Advisor financeiro", worksFor: { "@type": "Organization", name: "Southsea Investments", url: siteUrl } }} /><Breadcrumbs items={[{ label: "Sobre" }]} /><div className="grid items-start gap-12 lg:grid-cols-[0.8fr_1.2fr] lg:gap-20"><div className="relative mx-auto aspect-[4/5] w-full max-w-md border border-primary/30"><Image src="/images/7G2A2376.jpg.jpeg" alt="Munaretto" fill sizes="(max-width: 1024px) 448px, 34vw" className="object-cover object-top grayscale-[20%]" /></div><div><p className="eyebrow">Southsea Investments</p><h1 className="section-title">Corporate advisory para decisões que definem o próximo ciclo da empresa.</h1><p className="section-copy mt-6">A Southsea Investments apoia empresários, conselhos e diretorias na análise, modelagem e execução de operações financeiras complexas. A atuação parte do contexto da companhia, dos seus objetivos e dos critérios necessários para uma estrutura consistente.</p><div className="mt-10 grid gap-x-10 gap-y-8 sm:grid-cols-2"><div><h2 className="font-serif text-2xl text-foreground">Munaretto</h2><p className="mt-3 text-sm leading-6 text-foreground/70">Como advisor, atua na leitura estratégica da operação, na organização das premissas e na interlocução com os participantes envolvidos.</p></div><div><h2 className="font-serif text-2xl text-foreground">Visão estratégica</h2><p className="mt-3 text-sm leading-6 text-foreground/70">Decisões de capital são tratadas em conexão com operação, capacidade de execução, governança e horizonte corporativo.</p></div><div><h2 className="font-serif text-2xl text-foreground">Capacidade multidisciplinar</h2><p className="mt-3 text-sm leading-6 text-foreground/70">A Southsea coordena a visão financeira com assessores jurídicos, tributários e demais especialistas quando a operação exige.</p></div><div><h2 className="font-serif text-2xl text-foreground">Relacionamento corporativo</h2><p className="mt-3 text-sm leading-6 text-foreground/70">A interlocução é construída com discrição, método e foco na clareza para os tomadores de decisão.</p></div></div><div className="mt-10 border-l border-primary pl-5"><p className="text-base leading-7 text-foreground/70">A atuação considera o Brasil e operações internacionais, conforme a natureza do projeto e a coordenação dos profissionais habilitados em cada jurisdição.</p></div></div></div></div></div>;
 }

@@ -1,194 +1,150 @@
-export const siteData = {
-  header: {
-    menu: [
-      { label: "Início", href: "/" },
-      { label: "Soluções", href: "/solucoes" },
-      { label: "Sobre", href: "/sobre" },
-      { label: "Cases", href: "/cases" },
-      { label: "O Código Financeiro", href: "/curso" },
-      { label: "Contato", href: "/contato" },
+﻿export const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://southseainvestments.com.br";
+
+export const navigation = [
+  { label: "Início", href: "/" },
+  { label: "Soluções", href: "/solucoes" },
+  { label: "Como atuamos", href: "/como-atuamos" },
+  { label: "Sobre", href: "/sobre" },
+  { label: "Cases", href: "/cases" },
+  { label: "Insights", href: "/insights" },
+  { label: "Contato", href: "/contato" },
+] as const;
+
+export type Solution = {
+  slug: string;
+  title: string;
+  shortTitle: string;
+  description: string;
+  introduction: string;
+  scope: string[];
+  considerations: string[];
+};
+
+export const solutions: Solution[] = [
+  {
+    slug: "expansao-empresarial",
+    title: "Expansão empresarial",
+    shortTitle: "Expansão",
+    description: "Estruturação da estratégia de capital para projetos de crescimento, capacidade produtiva e novos mercados.",
+    introduction: "A expansão exige uma leitura integrada de estratégia, capacidade operacional, cronograma, fontes de recursos e riscos de execução.",
+    scope: [
+      "Diagnóstico da tese de crescimento e do enquadramento financeiro.",
+      "Modelagem de necessidades de capital, cronograma e cenários.",
+      "Avaliação de alternativas de estrutura e fontes de recursos.",
+      "Apoio à preparação para negociação e execução da operação.",
     ],
-    cta: {
-      label: "Falar com Consultor",
-      href: "/contato",
-    },
+    considerations: ["Premissas de demanda", "Capacidade operacional", "Capital de giro", "Garantias e covenants"],
   },
-  hero: {
-    eyebrow: "SOUTHSEA INVESTMENTS",
-    headline: "Estruturação estratégica e reestruturação de passivos para operações de alto volume.",
-    subheadline: "Atuamos nos bastidores da alta gestão corporativa, blindando o fluxo de caixa e reestruturando operações para empresas que precisam proteger e expandir seu capital.",
-    ctaPrimary: {
-      label: "Conhecer Soluções Institucionais",
-      href: "/solucoes",
-    },
-    ctaSecondary: {
-      label: "O Código Financeiro Corporativo",
-      href: "/curso",
-    },
-    microtext: "Consultoria confidencial para grandes empresas.",
-    badge: "Advisory de Alto Nível",
-  },
-  positioning: "Aprenda a mapear e reestruturar suas dívidas da mesma forma que os grandes escritórios de Advisory cobram centenas de milhares de reais para fazer.",
-  whenSouthseaEnters: {
-    title: "Por que as grandes empresas também quebram?",
-    text: "Muitos empresários focam em faturamento, enquanto o passivo e os juros bancários corroem toda a margem de lucro. O problema não é faturar 50 milhões, é sobrar dinheiro no final do dia.",
-    cards: [
-      "Dependência extrema de linhas de crédito caras.",
-      "Desconhecimento de como renegociar passivos.",
-      "Margem de lucro engolida por juros compostos.",
-      "Falta de um planejamento financeiro robusto.",
-      "Estrutura societária desprotegida.",
-      "Expansão sem viabilidade financeira comprovada.",
-      "Internacionalização de empresas e proteção patrimonial.",
-      "Desorganização na hora de buscar novos fundos.",
-      "Falta de visão sistêmica de endividamento."
-    ]
-  },
-  solutions: {
-    title: "Soluções institucionais de alta complexidade.",
-    items: [
-      {
-        id: "expansao-empresarial",
-        title: "Expansão empresarial",
-        description: "Análise de viabilidade, plano de expansão e capital necessário para crescimento sustentável regional ou nacional.",
-        href: "/solucoes/expansao-empresarial"
-      },
-      {
-        id: "credito-estruturado",
-        title: "Crédito corporativo estruturado",
-        description: "Modelagem financeira e captação alinhada ao fluxo de caixa, garantias e objetivo estratégico de longo prazo.",
-        href: "/solucoes/credito-estruturado"
-      },
-      {
-        id: "reestruturacao-de-passivos",
-        title: "Reestruturação de passivos",
-        description: "Diagnóstico profundo do endividamento, reorganização de obrigações e recuperação imediata da capacidade operacional.",
-        href: "/solucoes/reestruturacao-de-passivos"
-      }
-    ]
-  },
-  aboutJocimar: {
-    eyebrow: "O MENTOR POR TRÁS DOS BASTIDORES",
-    title: "Munaretto",
-    role: "Estrategista de operações multimilionárias",
-    text: [
-      "Munaretto lidera a SOUTHSEA INVESTMENTS operando nos bastidores da alta gestão corporativa. Ele é o 'fixer' que as grandes empresas chamam quando a expansão engasga ou a dívida foge do controle.",
-      "Com vasta experiência em operações de dezenas e centenas de milhões, ele condensou o núcleo desse conhecimento para que gestores de qualquer nível consigam compreender e estancar os sangramentos financeiros antes que seja tarde."
+  {
+    slug: "credito-estruturado",
+    title: "Crédito estruturado",
+    shortTitle: "Crédito estruturado",
+    description: "Modelagem de operações de crédito alinhadas ao fluxo de caixa, às garantias e ao objetivo corporativo.",
+    introduction: "Cada operação demanda compatibilidade entre prazo, amortização, garantias, recebíveis e a dinâmica real do negócio.",
+    scope: [
+      "Mapeamento de necessidades e critérios de enquadramento.",
+      "Organização de informações financeiras e operacionais relevantes.",
+      "Estruturação de cenários de prazo, garantias e fluxo de pagamento.",
+      "Apoio na interlocução técnica durante a negociação.",
     ],
-    quote: "A pior dívida é aquela que você fez porque não entendeu as regras do jogo. A riqueza não está apenas em quanto você ganha, mas em quanto você não deixa os bancos levarem.",
-    cta: {
-      label: "Conhecer a trajetória completa",
-      href: "/sobre",
-    }
+    considerations: ["Fluxo de caixa", "Garantias", "Recebíveis", "Prazo e amortização"],
   },
-  indicators: {
-    note: "Volume associado à trajetória institucional da SOUTHSEA INVESTMENTS.",
-    items: [
-      { value: "R$ 8,2 B", label: "em operações financeiras mapeadas" },
-      { value: "Centenas", label: "de empresas reestruturadas" },
-      { value: "1 Único", label: "Método que agora está disponível para você" }
-    ]
+  {
+    slug: "reestruturacao-de-passivos",
+    title: "Reestruturação de passivos",
+    shortTitle: "Reestruturação de passivos",
+    description: "Reorganização de obrigações financeiras para apoiar liquidez, previsibilidade e capacidade operacional.",
+    introduction: "A análise começa pela compreensão das obrigações, vencimentos, custos, garantias e impactos na operação — sem fórmulas genéricas.",
+    scope: [
+      "Leitura consolidada do passivo financeiro e dos contratos disponíveis.",
+      "Análise de vencimentos, obrigações e impactos de caixa.",
+      "Desenho de alternativas para reorganização financeira e jurídica.",
+      "Suporte técnico à preparação das tratativas com credores.",
+    ],
+    considerations: ["Perfil de vencimento", "Obrigações contratuais", "Liquidez", "Capacidade de pagamento"],
   },
-  timeline: {
-    title: "Como funciona a reestruturação dos grandes",
-    steps: [
-      {
-        title: "1. Mapeamento",
-        description: "Entender o real tamanho do buraco financeiro antes que os juros mascarem o principal."
-      },
-      {
-        title: "2. Avaliação de Dano",
-        description: "Separar o que é dívida estrutural do que é dívida tóxica (linhas caras e desnecessárias)."
-      },
-      {
-        title: "3. O Plano de Ação",
-        description: "Táticas de negociação e ancoragem frente a credores com os quais parecia impossível dialogar."
-      },
-      {
-        title: "4. Estancamento",
-        description: "Ações imediatas para parar a sangria de caixa no curto prazo."
-      },
-      {
-        title: "5. Novo Oxigênio",
-        description: "Reestruturação definitiva para voltar a focar no crescimento e na margem de lucro real."
-      }
-    ]
+  {
+    slug: "bndes-e-credito-rural",
+    title: "BNDES e crédito rural",
+    shortTitle: "BNDES e crédito rural",
+    description: "Análise de enquadramento e preparação de operações voltadas a investimento produtivo e cadeia do agronegócio.",
+    introduction: "Linhas de fomento e crédito rural requerem aderência entre projeto, documentação, finalidade, garantias e regras aplicáveis.",
+    scope: [
+      "Avaliação inicial de aderência do projeto e da finalidade.",
+      "Estruturação de informações para análise de viabilidade.",
+      "Organização da narrativa econômico-financeira da operação.",
+      "Acompanhamento técnico das etapas de estruturação e execução.",
+    ],
+    considerations: ["Finalidade do investimento", "Documentação", "Cronograma", "Enquadramento"],
   },
-  cases: {
-    title: "Resultados reais em cenários críticos.",
-    disclaimer: "Casos reais institucionais",
-    items: [
-      {
-        id: "case-1",
-        title: "Indústria de Grande Porte",
-        scenario: "Faturamento altíssimo, lucro líquido engolido pelo passivo bancário de curto prazo.",
-        challenge: "Dívida asfixiante que travava a compra de novos equipamentos.",
-        solution: "Alongamento da dívida e blindagem de fluxo de caixa baseada no Método SOUTHSEA.",
-        result: "Retomada da capacidade de investimento em 90 dias."
-      },
-      {
-        id: "case-2",
-        title: "Grupo do Agronegócio",
-        scenario: "Expansão desordenada que comprometeu todo o capital de giro da safra.",
-        challenge: "Dificuldade em renegociar linhas travadas por garantias ruins.",
-        solution: "Readequação das garantias e troca de perfil da dívida.",
-        result: "Salvação da operação anual e liberação de recebíveis."
-      }
-    ]
+  {
+    slug: "mercado-de-capitais",
+    title: "Mercado de capitais",
+    shortTitle: "Mercado de capitais",
+    description: "Preparação estratégica para alternativas de captação e estruturação compatíveis com o estágio da companhia.",
+    introduction: "O acesso ao mercado de capitais depende de governança, consistência de informações, estrutura da operação e coordenação especializada.",
+    scope: [
+      "Diagnóstico de prontidão e objetivos de captação.",
+      "Análise de alternativas e premissas da estrutura.",
+      "Preparação de informações para interlocução com participantes habilitados.",
+      "Coordenação estratégica com assessores jurídicos, financeiros e demais partes.",
+    ],
+    considerations: ["Governança", "Informações financeiras", "Estrutura societária", "Riscos da operação"],
   },
-  team: {
-    title: "A mentalidade de um Advisory de Alto Nível.",
-    text: "Ao adquirir 'O Código Financeiro Corporativo', você não está comprando um cursinho básico. Você está acessando a metodologia de uma boutique de investimentos especializada em salvar e expandir gigantes.",
-    areas: [
-      "Mentalidade de Crédito Avançado",
-      "Leitura Oculta de Contratos Bancários",
-      "Governanança e Compliance",
-      "Defesa de Margem de Lucro"
-    ]
+  {
+    slug: "operacoes-internacionais",
+    title: "Operações internacionais",
+    shortTitle: "Operações internacionais",
+    description: "Estratégia financeira para operações transfronteiriças, em coordenação com os especialistas necessários.",
+    introduction: "Projetos internacionais envolvem fluxos financeiros, moedas, contrapartes, documentação e aspectos societários ou regulatórios que precisam ser avaliados caso a caso.",
+    scope: [
+      "Diagnóstico do objetivo corporativo e da estrutura da operação.",
+      "Mapeamento de pontos de atenção financeiros, societários e de execução.",
+      "Modelagem inicial de fluxos e cenários de recursos.",
+      "Coordenação com assessores jurídicos, tributários e parceiros habilitados.",
+    ],
+    considerations: ["Moeda e fluxo", "Contrapartes", "Documentação", "Coordenação multidisciplinar"],
   },
-  compliance: {
-    title: "Educação Baseada na Prática.",
-    note: "Nosso método foi forjado no fogo de mesas de negociação complexas.",
-    items: [
-      "Casos Reais e Aplicáveis",
-      "Foco na Realidade Brasileira",
-      "Estratégias Legais e Protegidas",
-      "Resultados Visíveis"
-    ]
+];
+
+export const operatingModel = [
+  {
+    number: "01",
+    title: "Diagnóstico e enquadramento",
+    text: "Compreensão do contexto empresarial, objetivo da operação e critérios iniciais de viabilidade.",
   },
-  course: {
-    title: "O Código Financeiro Corporativo",
-    text: "O direcionamento definitivo para empresários e líderes que faturam milhões, mas sentem que não têm o controle absoluto de suas finanças. Aprenda como quitar passivos asfixiantes, negociar como um gigante e preparar seu terreno para a verdadeira expansão.",
-    badge: "Inscrições Abertas (R$ 97,00)",
-    ctaPrimary: {
-      label: "Quero meu acesso ao Código agora",
-      href: "#checkout"
-    },
-    ctaSecondary: {
-      label: "Falar com suporte",
-      href: "https://wa.me/5547996440299"
-    }
+  {
+    number: "02",
+    title: "Viabilidade e modelagem",
+    text: "Organização das premissas, cenários, necessidades de capital e elementos decisórios.",
   },
-  finalCta: {
-    title: "Um investimento de R$ 97 que pode economizar milhões em juros.",
-    text: "A ignorância financeira custa muito caro. O Código Financeiro Corporativo é a ferramenta que você precisa para assumir as rédeas da sua empresa antes que os credores o façam.",
-    ctaPrimary: {
-      label: "Quero acessar o Código por R$ 97",
-      href: "/curso"
-    },
-    ctaSecondary: {
-      label: "Falar com um consultor via WhatsApp",
-      href: "https://wa.me/5547996440299?text=Ol%C3%A1,%20gostaria%20de%20saber%20mais%20sobre%20o%20C%C3%B3digo%20Financeiro%20Corporativo."
-    }
+  {
+    number: "03",
+    title: "Estruturação financeira e jurídica",
+    text: "Desenho coordenado da operação com os especialistas e documentos aplicáveis.",
   },
-  footer: {
-    company: "SOUTHSEA INVESTMENTS",
-    tagline: "Consultoria Estratégica Empresarial",
-    disclaimer: "Os resultados variam de acordo com o empenho e aplicação de cada empresa. Este conteúdo não substitui uma consultoria dedicada, mas fornece o mapa necessário para a ação.",
-    contact: {
-      email: "contato@southsea.com.br",
-      phone: "+55 (47) 99644-0299",
-      locations: "Brasília, Balneário Camboriú e Flórida"
-    }
-  }
+  {
+    number: "04",
+    title: "Negociação e execução",
+    text: "Apoio à preparação, interlocução técnica e condução das etapas de execução.",
+  },
+  {
+    number: "05",
+    title: "Monitoramento",
+    text: "Acompanhamento dos marcos definidos, obrigações e próximos movimentos da operação.",
+  },
+] as const;
+
+// TODO: VALIDAR COM O CLIENTE ANTES DA PUBLICAÇÃO. Os canais abaixo vieram do projeto existente.
+export const contact = {
+  email: "contato@southsea.com.br",
+  whatsapp: "+55 (47) 99644-0299",
+  whatsappHref: "https://wa.me/5547996440299",
+};
+
+// TODO: VALIDAR COM O CLIENTE ANTES DA PUBLICAÇÃO. O preço do produto veio do projeto existente.
+export const course = {
+  title: "O Código Financeiro Corporativo",
+  price: "R$ 97,00",
+  description: "Educação executiva para líderes que desejam ampliar sua compreensão sobre capital, passivos, garantias e decisões financeiras corporativas.",
 };

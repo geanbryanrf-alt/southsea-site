@@ -3,13 +3,59 @@
 @tailwind utilities;
 
 @layer base {
+  :root { color-scheme: dark; }
   body {
     @apply bg-background text-foreground antialiased selection:bg-primary selection:text-dark;
+    background-image:
+      radial-gradient(circle at 15% 12%, rgba(194, 142, 70, 0.035), transparent 28rem),
+      radial-gradient(circle at 85% 72%, rgba(255, 255, 255, 0.018), transparent 30rem);
   }
+  a { -webkit-tap-highlight-color: transparent; }
+  :focus-visible { outline: 2px solid #c28e46; outline-offset: 3px; }
 }
 
 @layer utilities {
-  .text-balance {
-    text-wrap: balance;
+  .text-balance { text-wrap: balance; }
+  .eyebrow { @apply mb-4 text-xs font-semibold uppercase tracking-[0.2em] text-primary; }
+  .section-title { @apply font-serif text-3xl leading-tight text-foreground sm:text-4xl lg:text-5xl; text-shadow: 0 12px 42px rgba(0, 0, 0, 0.28); }
+  .section-copy { @apply text-base leading-7 text-foreground/70 sm:text-lg; }
+  .button-primary { @apply inline-flex items-center justify-center bg-primary px-5 py-3 text-sm font-semibold text-[#080808] transition-all duration-300 hover:-translate-y-0.5 hover:bg-primary-light hover:shadow-[0_12px_36px_rgba(194,142,70,0.2)]; }
+  .button-secondary { @apply inline-flex items-center justify-center border border-white/25 px-5 py-3 text-sm font-medium text-foreground transition-all duration-300 hover:-translate-y-0.5 hover:border-primary hover:text-primary; }
+  .footer-title { @apply mb-5 font-serif text-lg text-foreground; }
+  .footer-link { @apply text-sm text-foreground/60 transition-colors hover:text-primary; }
+}
+
+.marquee-mask {
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(to right, transparent, black 7%, black 93%, transparent);
+  mask-image: linear-gradient(to right, transparent, black 7%, black 93%, transparent);
+}
+
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: southsea-marquee 34s linear infinite;
+  will-change: transform;
+}
+
+.marquee-segment {
+  display: flex;
+  align-items: center;
+  gap: 2.75rem;
+  padding-right: 2.75rem;
+}
+
+@keyframes southsea-marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .marquee-track { animation: none; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
   }
 }

@@ -1,0 +1,3 @@
+﻿import Link from "next/link";
+import { ArrowUpRight } from "lucide-react";
+export function FixedAnalysisCTA() { return <Link href="/analise-estrategica" className="fixed bottom-4 right-4 z-40 hidden items-center gap-2 border border-primary/60 bg-[#101010]/95 px-4 py-3 text-xs font-semibold text-primary shadow-xl backdrop-blur transition-colors hover:bg-primary hover:text-[#080808] sm:flex">Solicitar análise estratégica <ArrowUpRight size={15} /></Link>; }

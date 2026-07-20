@@ -1,0 +1,10 @@
+﻿import type { Metadata } from "next";
+import Link from "next/link";
+import { ArrowRight } from "lucide-react";
+import { Breadcrumbs } from "@/components/Breadcrumbs";
+import { operatingModel } from "@/data/content";
+
+export const metadata: Metadata = { title: "Como atuamos", description: "Conheça as etapas de diagnóstico, modelagem, estruturação, execução e monitoramento da Southsea.", alternates: { canonical: "/como-atuamos" } };
+export default function ComoAtuamos() {
+  return <div className="bg-background pb-20 pt-32 lg:pb-24"><div className="container mx-auto px-5 md:px-10"><Breadcrumbs items={[{ label: "Como atuamos" }]} /><div className="max-w-3xl"><p className="eyebrow">Como atuamos</p><h1 className="section-title">Uma sequência clara para operações que não admitem improviso.</h1><p className="section-copy mt-5">O modelo oferece um caminho de trabalho para organizar a decisão. As entregas e a participação dos especialistas são ajustadas ao contexto da companhia e ao escopo contratado.</p></div><ol className="mt-14 grid gap-px overflow-hidden border border-white/10 bg-white/10 lg:grid-cols-5">{operatingModel.map((step) => <li key={step.number} className="min-h-[260px] bg-[#101010] p-6"><p className="font-serif text-4xl text-primary">{step.number}</p><h2 className="mt-9 font-serif text-2xl text-foreground">{step.title}</h2><p className="mt-4 text-sm leading-6 text-foreground/60">{step.text}</p></li>)}</ol><div className="mt-14 grid gap-8 border-t border-white/10 pt-10 md:grid-cols-2"><div><h2 className="font-serif text-3xl text-foreground">Critérios de atuação</h2><p className="mt-4 text-base leading-7 text-foreground/70">O início do trabalho depende do entendimento do objetivo, da disponibilidade de informações e da aderência entre o caso e o escopo de advisory.</p></div><div className="flex items-start md:justify-end"><Link href="/analise-estrategica" className="button-primary gap-2">Solicitar análise estratégica <ArrowRight size={17} /></Link></div></div></div></div>;
+}

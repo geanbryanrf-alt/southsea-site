@@ -1,64 +1,42 @@
-import Link from "next/link";
-import { siteData } from "@/data/content";
+﻿import Link from "next/link";
+import { contact, navigation, solutions } from "@/data/content";
 
 export function Footer() {
   return (
-    <footer className="bg-dark text-foreground/80 py-16 border-t border-white/5">
-      <div className="container mx-auto px-6 md:px-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
-        <div className="lg:col-span-1 space-y-4">
-          <Link href="/" className="block text-xl font-serif font-semibold tracking-wide text-foreground">
-            SOUTHSEA<span className="text-primary text-sm tracking-normal align-top ml-1">INVESTMENTS</span>
+    <footer className="border-t border-white/10 bg-[#030303] pb-24 pt-16 lg:pb-16">
+      <div className="container mx-auto grid gap-12 px-5 md:grid-cols-2 md:px-10 lg:grid-cols-4">
+        <div className="space-y-5">
+          <Link href="/" className="font-serif text-xl font-semibold tracking-[0.08em] text-foreground">
+            SOUTHSEA <span className="font-sans text-[0.52em] font-medium tracking-[0.22em] text-primary">INVESTMENTS</span>
           </Link>
-          <p className="text-sm font-light text-foreground/60">{siteData.footer.tagline}</p>
+          <p className="max-w-xs text-sm leading-6 text-foreground/60">Estruturação financeira para empresas em expansão, reestruturação ou captação de capital.</p>
         </div>
-
         <div>
-          <h4 className="text-foreground font-serif text-lg mb-6">Navegação</h4>
+          <h2 className="footer-title">Navegação</h2>
           <ul className="space-y-3">
-            {siteData.header.menu.map((item) => (
-              <li key={item.label}>
-                <Link href={item.href} className="text-sm hover:text-primary transition-colors">
-                  {item.label}
-                </Link>
-              </li>
-            ))}
+            {navigation.map((item) => <li key={item.href}><Link className="footer-link" href={item.href}>{item.label}</Link></li>)}
           </ul>
         </div>
-
         <div>
-          <h4 className="text-foreground font-serif text-lg mb-6">Soluções</h4>
+          <h2 className="footer-title">Soluções</h2>
           <ul className="space-y-3">
-            {siteData.solutions.items.slice(0, 4).map((item) => (
-              <li key={item.id}>
-                <Link href={item.href} className="text-sm hover:text-primary transition-colors">
-                  {item.title}
-                </Link>
-              </li>
-            ))}
-            <li>
-              <Link href="/solucoes" className="text-sm hover:text-primary transition-colors underline underline-offset-4 decoration-white/20">
-                Ver todas
-              </Link>
-            </li>
+            {solutions.slice(0, 4).map((item) => <li key={item.slug}><Link className="footer-link" href={`/solucoes/${item.slug}`}>{item.shortTitle}</Link></li>)}
+            <li><Link className="footer-link text-primary" href="/solucoes">Ver todas as soluções</Link></li>
           </ul>
         </div>
-
         <div>
-          <h4 className="text-foreground font-serif text-lg mb-6">Contato</h4>
-          <ul className="space-y-3 text-sm text-foreground/70">
-            <li>{siteData.footer.contact.email}</li>
-            <li>{siteData.footer.contact.phone}</li>
-            <li className="pt-2">{siteData.footer.contact.locations}</li>
-          </ul>
+          <h2 className="footer-title">Primeiro contato</h2>
+          <p className="mb-5 text-sm leading-6 text-foreground/60">Para uma avaliação inicial, compartilhe o contexto da operação pelo formulário estratégico.</p>
+          <Link href="/analise-estrategica" className="footer-link text-primary">Solicitar análise estratégica</Link>
+          <div className="mt-6 space-y-2 text-sm text-foreground/60">
+            <a className="block transition-colors hover:text-primary" href={`mailto:${contact.email}`}>{contact.email}</a>
+            <a className="block transition-colors hover:text-primary" href={contact.whatsappHref} target="_blank" rel="noreferrer">{contact.whatsapp}</a>
+          </div>
         </div>
       </div>
-      
-      <div className="container mx-auto px-6 md:px-12 mt-16 pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-foreground/50">
-        <p className="max-w-2xl">{siteData.footer.disclaimer}</p>
-        <div className="flex gap-4">
-          <Link href="/privacidade" className="hover:text-primary transition-colors">Política de privacidade</Link>
-          <Link href="/termos" className="hover:text-primary transition-colors">Termos de uso</Link>
-        </div>
+      <div className="container mx-auto mt-14 flex flex-col gap-4 border-t border-white/10 px-5 pt-7 text-xs text-foreground/40 md:flex-row md:items-center md:justify-between md:px-10">
+        <p>Southsea Investments. Informação institucional sujeita à validação de escopo.</p>
+        <div className="flex gap-5"><Link className="hover:text-primary" href="/privacidade">Privacidade</Link><Link className="hover:text-primary" href="/termos">Termos de uso</Link></div>
       </div>
     </footer>
   );

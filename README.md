@@ -1,47 +1,67 @@
-# Southsea Investments - Site Institucional
+﻿# Southsea Investments — Site institucional
 
-Este é o repositório do site institucional premium da Southsea Investments, desenvolvido com Next.js (App Router), Tailwind CSS e TypeScript.
+Site institucional da Southsea Investments, desenvolvido com Next.js 14 (App Router), TypeScript, Tailwind CSS e Framer Motion.
 
-## Requisitos
-- Node.js 18.17+ 
-- NPM ou Yarn
+## Executar localmente
 
-## Instalação e Execução
+Requer Node.js 18.17 ou superior.
 
-Como os arquivos foram gerados e preparados, você precisa apenas instalar as dependências e rodar o projeto localmente:
+```bash
+npm install
+npm run dev
+```
 
-1. Abra o terminal na pasta raiz do projeto (`SOUTHSEA`).
-2. Execute o comando para instalar as dependências:
-   ```bash
-   npm install
-   ```
-3. Inicie o servidor de desenvolvimento:
-   ```bash
-   npm run dev
-   ```
-4. Acesse o site no navegador através de `http://localhost:3000`.
+O site estará disponível em `http://localhost:3000`.
+
+## Verificações
+
+```bash
+npm run typecheck
+npm run lint
+npm run build
+```
+
+## Onde editar o conteúdo
+
+- Navegação, soluções, etapas, canais e curso: `src/data/content.ts`
+- Página inicial: `src/app/HomeClient.tsx`
+- Páginas de soluções: `src/app/solucoes/` e `src/app/solucoes/[slug]/page.tsx`
+- Sobre, cases, insights e contato: diretórios correspondentes em `src/app/`
+- Formulário de análise: `src/components/forms/StrategicForm.tsx`
+
+Antes de publicar, procure por `TODO: VALIDAR COM O CLIENTE ANTES DA PUBLICAÇÃO`. Os contatos e o preço do curso foram preservados a partir do projeto anterior e precisam de confirmação. Não adicione cifras, prazos, taxas, quantidade de empresas, cases ou resultados sem validação e autorização formal.
 
 ## Imagens
-As imagens devem ser movidas para a pasta `public` caso estejam na raiz.
-O Hero atual utiliza a imagem `7G2A2370.jpg.jpeg` referenciando pela raiz (como `/7G2A2370.jpg.jpeg`). Certifique-se de que a imagem final desejada esteja acessível neste caminho, ou altere nos componentes caso decida colocar na pasta `public/images/`.
 
-## Como alterar os Textos e Conteúdos
-Todo o conteúdo do site foi abstraído para facilitar a manutenção.
-Para editar qualquer texto, indicadores (ex: "R$ 8,2 bilhões"), descrições de soluções ou cases, edite o arquivo:
-`src/data/content.ts`
+- Fotografias institucionais: `public/images/`
+- Imagem social Open Graph: `public/og.png`
 
-**IMPORTANTE**: Dados, números e resultados indicados nesse arquivo devem ser validados pelo cliente antes da publicação final.
+Para substituir imagens, mantenha o novo arquivo em `public/` e atualize a referência no componente correspondente. A imagem social já está conectada aos metadados globais.
 
-## Configuração do Formulário e Webhook
-O formulário de "Análise Estratégica" foi construído em `src/components/forms/StrategicForm.tsx`.
-Na versão atual, ele simula um carregamento. Para integrar com um CRM ou ferramenta de envio real, defina a URL do seu Webhook:
+## Contatos
 
-1. Crie um arquivo `.env.local` na raiz do projeto.
-2. Adicione a variável:
-   `NEXT_PUBLIC_WEBHOOK_URL=https://seu-endpoint-de-webhook-aqui`
+Os dados públicos de contato estão centralizados em `src/data/content.ts`. Atualize `email`, `whatsapp` e `whatsappHref` depois da validação do cliente.
 
-## Publicação
-O projeto está pronto para ser hospedado na Vercel:
-1. Faça o commit e push para o seu repositório no GitHub.
-2. Acesse `vercel.com`, crie um novo projeto importando o repositório.
-3. A Vercel detectará automaticamente o Next.js e fará o deploy.
+## Formulário e integração CRM/webhook
+
+O navegador envia o formulário para `POST /api/analise-estrategica`. A rota valida os dados no servidor e só retorna sucesso depois de encaminhar o payload a um webhook configurado. Sem integração, ela informa claramente que o recebimento ainda não está habilitado; ela não simula envio.
+
+Crie `.env.local` a partir de `.env.example`:
+
+```bash
+SOUTHSEA_ANALYSIS_WEBHOOK_URL=https://seu-webhook-ou-crm.example/entrada
+NEXT_PUBLIC_SITE_URL=https://seu-dominio.example
+```
+
+Defina com o cliente o CRM/webhook, os responsáveis pelo acesso, a retenção dos dados e o texto jurídico definitivo de LGPD antes da publicação.
+
+## SEO
+
+- Metadados, canonical e Open Graph: `src/app/layout.tsx`
+- Sitemap: `src/app/sitemap.ts`
+- Robots: `src/app/robots.ts`
+- Dados estruturados Organization e ProfessionalService: layout global
+- Dados estruturados Person: página Sobre
+- BreadcrumbList: componente `src/components/Breadcrumbs.tsx`
+
+Atualize `NEXT_PUBLIC_SITE_URL` com o domínio definitivo para canonicals, sitemap e dados estruturados corretos.
