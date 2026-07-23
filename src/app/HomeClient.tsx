@@ -103,11 +103,11 @@ export function HomeClient() {
               { icon: Users, title: "Coordenação multidisciplinar", text: "Integração entre especialistas financeiros, jurídicos, tributários, societários e operacionais, coordenados conforme a natureza e a complexidade da operação." },
               { icon: Handshake, title: "Interlocução executiva", text: "Coordenação institucional com empresários, conselhos, investidores e instituições para alinhamento estratégico, tomada de decisão e execução com total discrição." },
             ].map((item, index) => (
-              <Reveal key={item.title} delay={index * 0.06} className="bg-[#080808] p-6 sm:p-8">
-                <span className="flex h-12 w-12 items-center justify-center rounded-full border border-primary/40 text-primary"><item.icon size={20} strokeWidth={1.6} /></span>
-                <h3 className="mt-7 font-serif text-2xl text-foreground">{item.title}</h3>
+              <Reveal key={item.title} delay={index * 0.06} className="group bg-[#080808] p-6 transition-colors duration-300 hover:bg-[#111111] active:bg-[#111111] sm:p-8">
+                <span className="flex h-12 w-12 items-center justify-center rounded-full border border-primary/40 text-primary transition-all duration-300 group-hover:border-primary group-hover:bg-primary/10 group-active:border-primary group-active:bg-primary/10"><item.icon size={20} strokeWidth={1.6} /></span>
+                <h3 className="mt-7 font-serif text-2xl text-foreground transition-colors duration-300 group-hover:text-primary group-active:text-primary">{item.title}</h3>
                 {item.subtitle && <p className="mt-1.5 text-xs font-semibold uppercase tracking-[0.12em] text-primary">{item.subtitle}</p>}
-                <div className="mt-3 h-px w-10 bg-primary/40" />
+                <div className="mt-3 h-px w-10 bg-primary/40 transition-all duration-300 group-hover:w-16 group-active:w-16" />
                 <p className="mt-4 text-sm leading-6 text-foreground/60">{item.text}</p>
               </Reveal>
             ))}
