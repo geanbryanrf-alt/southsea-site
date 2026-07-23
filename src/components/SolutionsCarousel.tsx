@@ -5,6 +5,7 @@ import { ArrowLeft, ArrowRight } from "lucide-react";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import { solutions } from "@/data/content";
+import { solutionIcons } from "@/lib/icons";
 
 export function SolutionsCarousel() {
   const [activeCard, setActiveCard] = useState(0);
@@ -113,24 +114,31 @@ export function SolutionsCarousel() {
         }}
 
       >
-        {solutions.map((solution, index) => (
+        {solutions.map((solution, index) => {
+          const SolutionIcon = solutionIcons[solution.icon];
+          return (
           <motion.article
             key={solution.slug}
             data-solution-card
-            className="group relative flex min-h-[330px] w-[86%] shrink-0 snap-start flex-col overflow-hidden border border-white/10 bg-[#080808] p-7 sm:w-[calc(50%-0.5rem)] lg:w-[calc(33.333%-0.68rem)]"
+            className="group relative flex min-h-[360px] w-[86%] shrink-0 snap-start flex-col overflow-hidden border border-white/10 bg-[#080808] p-7 sm:w-[calc(50%-0.5rem)] lg:w-[calc(33.333%-0.68rem)]"
             whileHover={{ y: -6 }}
             transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
           >
             <div className="absolute inset-x-0 top-0 h-px origin-left scale-x-0 bg-gradient-to-r from-primary via-primary-light to-transparent transition-transform duration-500 group-hover:scale-x-100" />
             <div className="absolute -right-20 -top-20 h-44 w-44 rounded-full bg-primary/0 blur-3xl transition-colors duration-500 group-hover:bg-primary/10" />
-            <span className="relative text-xs font-semibold tracking-[0.16em] text-primary">0{index + 1}</span>
-            <h3 className="relative mt-10 font-serif text-3xl text-foreground transition-colors duration-300 group-hover:text-primary">{solution.title}</h3>
+            <div className="relative flex items-center justify-between">
+              <SolutionIcon className="text-primary transition-transform duration-500 group-hover:scale-110" size={30} strokeWidth={1.4} />
+              <span className="text-xs font-semibold tracking-[0.16em] text-primary/50">{String(index + 1).padStart(2, "0")}</span>
+            </div>
+            <h3 className="relative mt-7 font-serif text-2xl leading-tight text-foreground transition-colors duration-300 group-hover:text-primary">{solution.title}</h3>
+            <div className="relative mt-4 h-px w-10 bg-primary/40 transition-all duration-500 group-hover:w-16" />
             <p className="relative mt-4 flex-1 text-sm leading-6 text-foreground/60">{solution.description}</p>
             <Link href={`/solucoes/${solution.slug}`} className="relative mt-8 inline-flex w-fit items-center gap-2 text-sm text-primary">
-              Explorar solução <ArrowRight size={16} className="transition-transform duration-300 group-hover:translate-x-1.5" />
+              Conhecer a solução <ArrowRight size={16} className="transition-transform duration-300 group-hover:translate-x-1.5" />
             </Link>
           </motion.article>
-        ))}
+          );
+        })}
       </div>
 
       <div className="mt-8 flex items-center justify-center gap-5">

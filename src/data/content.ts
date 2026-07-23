@@ -4,6 +4,7 @@ export const navigation = [
   { label: "Início", href: "/" },
   { label: "Soluções", href: "/solucoes" },
   { label: "Como atuamos", href: "/como-atuamos" },
+  { label: "Curso", href: "/curso" },
   { label: "Sobre", href: "/sobre" },
   { label: "Cases", href: "/cases" },
   { label: "Insights", href: "/insights" },
@@ -14,6 +15,8 @@ export type Solution = {
   slug: string;
   title: string;
   shortTitle: string;
+  /** Nome do ícone lucide-react usado nos cards de solução. */
+  icon: "TrendingUp" | "ShieldCheck" | "RefreshCw" | "Network" | "Tractor" | "LineChart" | "Globe";
   description: string;
   introduction: string;
   scope: string[];
@@ -25,7 +28,8 @@ export const solutions: Solution[] = [
     slug: "expansao-empresarial",
     title: "Expansão empresarial",
     shortTitle: "Expansão",
-    description: "Estruturação da estratégia de capital para projetos de crescimento, capacidade produtiva e novos mercados.",
+    icon: "TrendingUp",
+    description: "Estruturamos a estratégia de capital para projetos de crescimento, aumento de capacidade operacional e novos mercados.",
     introduction: "A expansão exige uma leitura integrada de estratégia, capacidade operacional, cronograma, fontes de recursos e riscos de execução.",
     scope: [
       "Diagnóstico da tese de crescimento e do enquadramento financeiro.",
@@ -39,7 +43,8 @@ export const solutions: Solution[] = [
     slug: "credito-estruturado",
     title: "Crédito estruturado",
     shortTitle: "Crédito estruturado",
-    description: "Modelagem de operações de crédito alinhadas ao fluxo de caixa, às garantias e ao objetivo corporativo.",
+    icon: "ShieldCheck",
+    description: "Modelagem de operações de crédito corporativo alinhadas à estratégia financeira, fluxo de caixa e às garantias disponíveis.",
     introduction: "Cada operação demanda compatibilidade entre prazo, amortização, garantias, recebíveis e a dinâmica real do negócio.",
     scope: [
       "Mapeamento de necessidades e critérios de enquadramento.",
@@ -51,9 +56,10 @@ export const solutions: Solution[] = [
   },
   {
     slug: "reestruturacao-de-passivos",
-    title: "Reestruturação de passivos",
+    title: "Reestruturação financeira e de passivos",
     shortTitle: "Reestruturação de passivos",
-    description: "Reorganização de obrigações financeiras para apoiar liquidez, previsibilidade e capacidade operacional.",
+    icon: "RefreshCw",
+    description: "Negociação e redesenho de obrigações para restabelecer liquidez, equilíbrio financeiro e capacidade de crescimento.",
     introduction: "A análise começa pela compreensão das obrigações, vencimentos, custos, garantias e impactos na operação — sem fórmulas genéricas.",
     scope: [
       "Leitura consolidada do passivo financeiro e dos contratos disponíveis.",
@@ -64,9 +70,25 @@ export const solutions: Solution[] = [
     considerations: ["Perfil de vencimento", "Obrigações contratuais", "Liquidez", "Capacidade de pagamento"],
   },
   {
+    slug: "estruturacao-societaria",
+    title: "Estruturação societária",
+    shortTitle: "Estruturação societária",
+    icon: "Network",
+    description: "Definição da arquitetura societária para expansão, reorganizações, sucessão e novos investimentos.",
+    introduction: "Movimentos societários pedem clareza sobre participações, governança, sucessão e os efeitos sobre a operação e o capital da companhia.",
+    scope: [
+      "Leitura da estrutura societária atual e dos objetivos corporativos.",
+      "Mapeamento de participações, governança e pontos de atenção.",
+      "Desenho de alternativas de reorganização e sucessão.",
+      "Coordenação com assessores jurídicos, tributários e contábeis.",
+    ],
+    considerations: ["Participações", "Governança", "Sucessão", "Efeitos tributários"],
+  },
+  {
     slug: "bndes-e-credito-rural",
     title: "BNDES e crédito rural",
     shortTitle: "BNDES e crédito rural",
+    icon: "Tractor",
     description: "Análise de enquadramento e preparação de operações voltadas a investimento produtivo e cadeia do agronegócio.",
     introduction: "Linhas de fomento e crédito rural requerem aderência entre projeto, documentação, finalidade, garantias e regras aplicáveis.",
     scope: [
@@ -81,7 +103,8 @@ export const solutions: Solution[] = [
     slug: "mercado-de-capitais",
     title: "Mercado de capitais",
     shortTitle: "Mercado de capitais",
-    description: "Preparação estratégica para alternativas de captação e estruturação compatíveis com o estágio da companhia.",
+    icon: "LineChart",
+    description: "Preparação estratégica para captação de recursos por meio de instrumentos do mercado de capitais, alinhada ao estágio e aos objetivos da empresa.",
     introduction: "O acesso ao mercado de capitais depende de governança, consistência de informações, estrutura da operação e coordenação especializada.",
     scope: [
       "Diagnóstico de prontidão e objetivos de captação.",
@@ -95,7 +118,8 @@ export const solutions: Solution[] = [
     slug: "operacoes-internacionais",
     title: "Operações internacionais",
     shortTitle: "Operações internacionais",
-    description: "Estratégia financeira para operações transfronteiriças, em coordenação com os especialistas necessários.",
+    icon: "Globe",
+    description: "Estruturação de operações internacionais, investimentos, captação e expansão empresarial com coordenação jurídica, financeira e tributária.",
     introduction: "Projetos internacionais envolvem fluxos financeiros, moedas, contrapartes, documentação e aspectos societários ou regulatórios que precisam ser avaliados caso a caso.",
     scope: [
       "Diagnóstico do objetivo corporativo e da estrutura da operação.",
@@ -107,44 +131,64 @@ export const solutions: Solution[] = [
   },
 ];
 
-export const operatingModel = [
+export type OperatingStep = {
+  number: string;
+  /** Nome do ícone lucide-react usado nos passos do processo. */
+  icon: "Search" | "PenTool" | "Layers" | "GitMerge" | "Activity";
+  title: string;
+  text: string;
+};
+
+export const operatingModel: OperatingStep[] = [
   {
     number: "01",
-    title: "Diagnóstico e enquadramento",
-    text: "Compreensão do contexto empresarial, objetivo da operação e critérios iniciais de viabilidade.",
+    icon: "Search",
+    title: "Diagnóstico estratégico",
+    text: "Compreensão do contexto empresarial, do objetivo da operação e dos critérios iniciais de viabilidade.",
   },
   {
     number: "02",
-    title: "Viabilidade e modelagem",
+    icon: "PenTool",
+    title: "Modelagem da operação",
     text: "Organização das premissas, cenários, necessidades de capital e elementos decisórios.",
   },
   {
     number: "03",
-    title: "Estruturação financeira e jurídica",
-    text: "Desenho coordenado da operação com os especialistas e documentos aplicáveis.",
+    icon: "Layers",
+    title: "Estruturação da operação",
+    text: "Desenho coordenado da operação com os especialistas, contratos e documentos aplicáveis.",
   },
   {
     number: "04",
-    title: "Negociação e execução",
-    text: "Apoio à preparação, interlocução técnica e condução das etapas de execução.",
+    icon: "GitMerge",
+    title: "Coordenação da execução",
+    text: "Apoio à preparação, interlocução técnica e condução das etapas de negociação e execução.",
   },
   {
     number: "05",
-    title: "Monitoramento",
-    text: "Acompanhamento dos marcos definidos, obrigações e próximos movimentos da operação.",
+    icon: "Activity",
+    title: "Acompanhamento estratégico",
+    text: "Acompanhamento dos marcos definidos, das obrigações e dos próximos movimentos da operação.",
   },
-] as const;
+];
 
-// TODO: VALIDAR COM O CLIENTE ANTES DA PUBLICAÇÃO. Os canais abaixo vieram do projeto existente.
+// Canal de contato validado com o cliente (jul/2026): apenas WhatsApp.
+// E-mail corporativo ainda não existe — não publicar até haver um endereço ativo.
 export const contact = {
-  email: "contato@southsea.com.br",
+  email: null as string | null,
   whatsapp: "+55 (47) 99644-0299",
   whatsappHref: "https://wa.me/5547996440299",
 };
 
-// TODO: VALIDAR COM O CLIENTE ANTES DA PUBLICAÇÃO. O preço do produto veio do projeto existente.
+// Mensagem pré-preenchida para inscrições na lista de espera do programa.
+export const courseWaitlistHref = `https://wa.me/5547996440299?text=${encodeURIComponent(
+  "Olá! Quero entrar na lista de espera do programa O Código Financeiro Corporativo.",
+)}`;
+
+// Programa em produção (jul/2026): lançamento futuro, sem preço fixo divulgado.
 export const course = {
   title: "O Código Financeiro Corporativo",
-  price: "R$ 97,00",
+  status: "Em produção",
   description: "Educação executiva para líderes que desejam ampliar sua compreensão sobre capital, passivos, garantias e decisões financeiras corporativas.",
 };
+

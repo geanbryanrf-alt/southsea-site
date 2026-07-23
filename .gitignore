@@ -19,6 +19,9 @@
 .DS_Store
 *.pem
 
+# fontes de imagem brutas (já copiadas para public/images conforme necessário)
+/imagens/
+
 # debug
 npm-debug.log*
 yarn-debug.log*

@@ -29,8 +29,8 @@ export function Footer() {
           <p className="mb-5 text-sm leading-6 text-foreground/60">Para uma avaliação inicial, compartilhe o contexto da operação pelo formulário estratégico.</p>
           <Link href="/analise-estrategica" className="footer-link text-primary">Solicitar análise estratégica</Link>
           <div className="mt-6 space-y-2 text-sm text-foreground/60">
-            <a className="block transition-colors hover:text-primary" href={`mailto:${contact.email}`}>{contact.email}</a>
-            <a className="block transition-colors hover:text-primary" href={contact.whatsappHref} target="_blank" rel="noreferrer">{contact.whatsapp}</a>
+            {contact.email && <a className="block transition-colors hover:text-primary" href={`mailto:${contact.email}`}>{contact.email}</a>}
+            <a className="block transition-colors hover:text-primary" href={contact.whatsappHref} target="_blank" rel="noreferrer">WhatsApp · {contact.whatsapp}</a>
           </div>
         </div>
       </div>
